@@ -1,0 +1,14 @@
+/*Manually compile tests with TypeScript
+Sometimes, Playwright Test will not be able to transform your TypeScript code correctly, for example when you are using experimental or very recent features of TypeScript, usually configured in tsconfig.json.
+In this case, you can perform your own TypeScript compilation before sending the tests to Playwright.
+First add a tsconfig.json file inside the tests directory:
+*/
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "commonjs",
+        "moduleResolution": "Node",
+        "sourceMap": true,
+        "outDir": "../tests-out",
+    }
+}

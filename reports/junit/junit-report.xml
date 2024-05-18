@@ -1,0 +1,13 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="24.664300000000004">
+<testsuite name="tests/login.test.js" timestamp="2024-05-18T05:19:03.599Z" hostname="firefox" tests="1" failures="0" skipped="0" time="22.379" errors="0">
+<testcase name="Login test demo" classname="tests/login.test.js" time="22.379">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/tests-login-Login-test-demo-firefox/test-finished-1.png]]
+
+[[ATTACHMENT|../../test-results/tests-login-Login-test-demo-firefox/video.webm]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

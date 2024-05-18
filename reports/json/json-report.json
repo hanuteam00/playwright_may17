@@ -1,0 +1,147 @@
+{
+  "config": {
+    "configFile": "/Users/manhkaka/Downloads/automation-tut/playwright_may17/playwright.config.ts",
+    "rootDir": "/Users/manhkaka/Downloads/automation-tut/playwright_may17",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "line",
+        null
+      ],
+      [
+        "dot",
+        null
+      ],
+      [
+        "list",
+        {
+          "printSteps": true
+        }
+      ],
+      [
+        "blob",
+        {
+          "outputDir": "reports/blob",
+          "fileName": "blob-report-darwin.zip"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "reports/json/json-report.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "reports/junit/junit-report.xml"
+        }
+      ],
+      [
+        "github",
+        {
+          "outputDir": "reports/github/github-report"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/manhkaka/Downloads/automation-tut/playwright_may17/test-results",
+        "repeatEach": 1,
+        "retries": 2,
+        "metadata": {},
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/manhkaka/Downloads/automation-tut/playwright_may17",
+        "testIgnore": [],
+        "testMatch": [
+          "tests/login.test.js"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.44.0",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "tests/login.test.js",
+      "file": "tests/login.test.js",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Login test demo",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "firefox",
+              "projectName": "firefox",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "passed",
+                  "duration": 22379,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2024-05-18T05:19:04.191Z",
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "/Users/manhkaka/Downloads/automation-tut/playwright_may17/test-results/tests-login-Login-test-demo-firefox/test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "/Users/manhkaka/Downloads/automation-tut/playwright_may17/test-results/tests-login-Login-test-demo-firefox/video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "94416ff326c6cac9157c-299a8f778bd40e517d37",
+          "file": "tests/login.test.js",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2024-05-18T05:19:03.533Z",
+    "duration": 24664.300000000003,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
