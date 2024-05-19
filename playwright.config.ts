@@ -58,8 +58,8 @@ export default defineConfig({
     headless: false,
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-    // baseURL: 'https://dev.mathgpt.ai/',
-    baseURL: "https://ecommerce-playground.lambdatest.io/index.php?",
+    baseURL: 'https://dev.mathgpt.ai/',
+    // baseURL: "https://ecommerce-playground.lambdatest.io/index.php?",
 
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
