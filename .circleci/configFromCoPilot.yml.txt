@@ -1,0 +1,32 @@
+version: 2.1 # This sets the version of CircleCI to use.
+
+orbs: # Orbs are reusable snippets of code.
+  node: circleci/node@4.1.0 # This orb sets up a Node.js environment.
+
+workflows: # This starts the definition of workflows.
+  version: 2 # This sets the version of workflows to use.
+  build-and-test: # This is a workflow.
+    jobs: # These are the jobs of the workflow.
+      - test # This workflow has a single job called `test`.
+
+jobs: # This starts the definition of jobs.
+  test: # This is a job called `test`.
+    docker: # This job will run in a Docker container.
+      - image: circleci/node:lts # The Docker container will use the latest LTS (Long Term Support) version of Node.js.
+    steps: # These are the steps of the job.
+      - checkout # This step checks out your repository's code onto the runner.
+
+      - node/install-packages: # This step installs your project's dependencies.
+          pkg-manager: npm-ci # It uses `npm ci`, which is similar to `npm install`, but it's designed to be used in automated environments.
+
+      - run: # This step installs the browsers needed by Playwright.
+          name: Install Playwright Browsers
+          command: npx playwright install --with-deps # It uses the `playwright install` command.
+
+      - run: # This step runs your Playwright tests.
+          name: Run Playwright tests
+          command: npx playwright test "tests/inprogress/1.login.test.ts" # It's currently set to only run the `1.login.test.ts` test file.
+
+      - store_artifacts: # This step uploads the test reports as artifacts.
+          path: playwright-report/ # They will be taken from the "playwright-report/" directory.
+          destination: playwright-report # They will be named "playwright-report".
