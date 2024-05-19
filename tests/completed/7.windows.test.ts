@@ -21,7 +21,7 @@ test("TC1: Interact with single tab, single window popup", async ({ page }) => {
     await page.waitForTimeout(3000);
 })
 
-test.only("Interact with multiple tabs, multiple window popups", async ({ page }) => {
+test("Interact with multiple tabs, multiple window popups", async ({ page }) => {
     await page.goto("https://www.lambdatest.com/selenium-playground/window-popup-modal-demo"); // Điều hướng trình duyệt đến URL chỉ định
 
     const [multiPage] = await Promise.all([ // Sử dụng Promise.all để đợi cho cả hai hành động sau hoàn thành

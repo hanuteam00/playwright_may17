@@ -27,7 +27,7 @@ export default defineConfig({
   timeout: 60 * 1000,
 
   testDir: './tests/inprogress',
-  // testMatch: ["tests/inprogress/basicInteractions.test.ts"],
+  // testMatch: ["tests/pomtest/*.test.ts"],
   /* Run tests in files in parallel */
   // fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -53,17 +53,19 @@ export default defineConfig({
     },
     launchOptions: {
       //slowMo literally slows down browser interactions.
-      slowMo: 1000,
+      slowMo: 500,
     },
     headless: false,
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-    baseURL: 'https://dev.mathgpt.ai/',
+    // baseURL: 'https://dev.mathgpt.ai/',
+    baseURL: "https://ecommerce-playground.lambdatest.io/index.php?",
+
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
-  retries: 2,
+  // retries: 2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   /*
   reporter: [

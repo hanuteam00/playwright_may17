@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "pretest": "tsc --incremental -p tests/tsconfig.json",
-    "test": "playwright test -c tests-out"
+    "pretest1": "tsc --incremental -p tests/tsconfig.json",
+    "test": "playwright test -c tests-out",
+    "test-cucumber": "./node_modules/.bin/cucumber-js --exit",
+    "pretest": "tsc",
+    "test-cucumber-js": "cucumber-js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@cucumber/cucumber": "^10.7.0",
     "@playwright/test": "^1.44.0",
-    "@types/node": "^20.12.12"
+    "@types/node": "^20.12.12",
+    "moment": "^2.30.1"
   }
 }

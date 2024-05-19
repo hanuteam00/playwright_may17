@@ -1,0 +1,30 @@
+[
+  {
+    "firstname": "Koushik",
+    "lastname": "Chatterjee",
+    "email": "1716101104847@mailinator.com",
+    "phone_number": "1234567890",
+    "password": "Koushik@123"
+  },
+  {
+    "firstname": "Koushik",
+    "lastname": "Chatterjee",
+    "email": "1716101201539@mailinator.com",
+    "phone_number": "1234567890",
+    "password": "Koushik@123"
+  },
+  {
+    "firstname": "Koushik",
+    "lastname": "Chatterjee",
+    "email": "1716101776608@mailinator.com",
+    "phone_number": "1234567890",
+    "password": "Koushik@123"
+  },
+  {
+    "firstname": "Koushik",
+    "lastname": "Chatterjee",
+    "email": "1716103012161@mailinator.com",
+    "phone_number": "1234567890",
+    "password": "Koushik@123"
+  }
+]
