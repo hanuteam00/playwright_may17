@@ -55,7 +55,7 @@ export default defineConfig({
       //slowMo literally slows down browser interactions.
       slowMo: 500,
     },
-    headless: false,
+    // headless: true,//need to set as true for running in CI
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
     baseURL: 'https://dev.mathgpt.ai/',
