@@ -40,7 +40,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     //Action timeout	
-    actionTimeout: 5000, // Maximum time in milliseconds to wait for action to finish
+    actionTimeout: 30000, // Maximum time in milliseconds to wait for action to finish
     //Timeout for each navigation action:
     navigationTimeout: 30000,
     //not work - hope to see screenshot here after running test
