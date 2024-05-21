@@ -6,6 +6,9 @@ First add a tsconfig.json file inside the tests directory:
 {
     "compilerOptions": {
         "target": "ES6",
+        //The strict fields set to true will enable type checking for Typescript code, 
+        //which guarantees the types will match the data value of variables or methods
+        "strict": true,
         "module": "commonjs",
         //sử dụng cho import moment from "moment";
         //TypeScript không cho phép import một module dùng export = moment (trong code moment) mà không có flag esModuleInterop

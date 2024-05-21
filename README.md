@@ -492,3 +492,15 @@ Run tests in interactive UI mode, with a built-in watch mode (Preview)
 npx playwright test --ui
 Ask for help
 npx playwright test --help
+
+## Playwright CI/CD
+https://bitbucket.org/pradap-pandiyan-sdet/playwright-circle-ci/src/master/
+https://pradappandiyan.medium.com/running-playwright-tests-on-circleci-a-step-by-step-guide-16dec052cbea
+
+## Playwright and Docker
+https://www.digitalocean.com/community/tutorials/how-to-run-end-to-end-tests-using-playwright-and-docker
+
+dotenv package to manage your environment variables
+Install the dotenv package:
+npm install dotenv
+Create a .env file in your project root and add your URLs:

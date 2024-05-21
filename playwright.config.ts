@@ -55,10 +55,10 @@ export default defineConfig({
       //slowMo literally slows down browser interactions.
       slowMo: 500,
     },
-    // headless: true,//need to set as true for running in CI
+    headless: false,//need to set as true for running in CI
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-    baseURL: 'https://dev.mathgpt.ai/',
+    // baseURL: 'https://dev.mathgpt.ai/',
     // baseURL: "https://ecommerce-playground.lambdatest.io/index.php?",
 
 

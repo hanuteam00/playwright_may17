@@ -1,10 +1,17 @@
+import config from '../base/configTypes';
 import { chromium, test, expect } from "@playwright/test";
 
+// console.log(config.DEV_URL);
+// console.log(config.HOTFIX_URL);
+// console.log(config.EXP_URL);
+// console.log(config.POC_URL);
+// console.log(config.PRODUCTION_URL);
+// console.log(config.BASE_URL);
 
-test("Login test demo", async ({ page}) => {
-
+test("Login test demo", async ({ page }) => {
     //go to login page
-    await page.goto("/login?role=educator");
+    // await page.goto("/login?role=educator");
+    await page.goto(`${config.BASE_URL}/login?role=educator`);
     await page.hover(`h3[class^='TitleStyled-']`);
     await page.waitForTimeout(5000);
     await page.getByPlaceholder('Enter your email').fill('manh+edu1@gotitapp.co');
