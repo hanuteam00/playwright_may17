@@ -35,7 +35,8 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npx playwright test playwright_may17/tests/pom/base/addToCartUsingFixture.test.ts
+        run: npx playwright test "tests/pom/base"
+        # run: npx playwright test playwright_may17/tests/pom/base/addToCartUsingFixture.test.ts
 
       - name: Upload test report artifact
         uses: actions/upload-artifact@v4
@@ -45,7 +46,7 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-          
+
 # name: Playwright Tests # This sets the name of your workflow to "Playwright Tests".
 
 # on: # This specifies when your workflow should run.
