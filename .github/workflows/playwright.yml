@@ -1,37 +1,85 @@
-name: Playwright Tests # This sets the name of your workflow to "Playwright Tests".
+name: Playwright Tests
 
-on: # This specifies when your workflow should run.
-  push: # It will run whenever there's a `push` event...
-    branches: [main, master] # ...on the `main` or `master` branches.
-  pull_request: # It will also run whenever there's a `pull_request` event...
-    branches: [main, master] # ...on the `main` or `master` branches.
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
 
-jobs: # This starts the definition of jobs.
-  test: # This is a job called `test`.
-    timeout-minutes: 60 # This job has a timeout of 60 minutes.
-    runs-on: ubuntu-latest # This job will run on the latest version of Ubuntu.
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
 
-    steps: # These are the steps of the job.
-      - uses: actions/checkout@v4 # This step checks out your repository's code onto the runner.
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4 # This step sets up a Node.js environment on the runner.
+      - name: Cache dependencies
+        uses: actions/cache@v2
         with:
-          node-version: lts/* # It will install the latest LTS (Long Term Support) version of Node.js.
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-
 
-      - name: Install dependencies # This step installs your project's dependencies.
-        run: npm ci # It uses `npm ci`, which is similar to `npm install`, but it's designed to be used in automated environments.
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
 
-      - name: Install Playwright Browsers # This step installs the browsers needed by Playwright.
-        run: npx playwright install --with-deps # It uses the `playwright install` command.
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Run Playwright tests # This step runs your Playwright tests.
-        # run: npx playwright test "tests/pom/base" # It's currently set to only run the `1.login.test.ts` test file.
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
         run: npx playwright test playwright_may17/tests/pom/base/addToCartUsingFixture.test.ts
-        # run: npx playwright test  # This line is commented out, so it won't do anything.
 
-      - uses: actions/upload-artifact@v4 # This step uploads the test reports as artifacts.
-        if: always() # It will always run, regardless of the outcome of the previous steps.
+      - name: Upload test report artifact
+        uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: playwright-report # The artifacts will be named "playwright-report".
-          path: playwright-report/ # They will be taken from the "playwright-report/" directory.
-          retention-days: 30 # They will be kept for 30 days.
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+          
+# name: Playwright Tests # This sets the name of your workflow to "Playwright Tests".
+
+# on: # This specifies when your workflow should run.
+#   push: # It will run whenever there's a `push` event...
+#     branches: [main, master] # ...on the `main` or `master` branches.
+#   pull_request: # It will also run whenever there's a `pull_request` event...
+#     branches: [main, master] # ...on the `main` or `master` branches.
+
+# jobs: # This starts the definition of jobs.
+#   test: # This is a job called `test`.
+#     timeout-minutes: 60 # This job has a timeout of 60 minutes.
+#     runs-on: ubuntu-latest # This job will run on the latest version of Ubuntu.
+
+#     steps: # These are the steps of the job.
+#       - uses: actions/checkout@v4 # This step checks out your repository's code onto the runner.
+
+#       - uses: actions/setup-node@v4 # This step sets up a Node.js environment on the runner.
+#         with:
+#           node-version: lts/* # It will install the latest LTS (Long Term Support) version of Node.js.
+
+#       - name: Install dependencies # This step installs your project's dependencies.
+#         run: npm ci # It uses `npm ci`, which is similar to `npm install`, but it's designed to be used in automated environments.
+
+#       - name: Install Playwright Browsers # This step installs the browsers needed by Playwright.
+#         run: npx playwright install --with-deps # It uses the `playwright install` command.
+
+#       - name: Run Playwright tests # This step runs your Playwright tests.
+#         run: npx playwright test "tests/pom/base" # It's currently set to only run the `1.login.test.ts` test file.
+#         # run: npx playwright test playwright_may17/tests/pom/base/addToCartUsingFixture.test.ts
+#         # run: npx playwright test  # This line is commented out, so it won't do anything.
+
+#       - uses: actions/upload-artifact@v4 # This step uploads the test reports as artifacts.
+#         if: always() # It will always run, regardless of the outcome of the previous steps.
+#         with:
+#           name: playwright-report # The artifacts will be named "playwright-report".
+#           path: playwright-report/ # They will be taken from the "playwright-report/" directory.
+#           retention-days: 30 # They will be kept for 30 days.
