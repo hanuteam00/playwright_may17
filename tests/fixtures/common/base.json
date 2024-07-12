@@ -1,0 +1,4 @@
+{
+    "signupUrl": "/signup?role=educator",
+    "loginUrl": "/login?role=educator"
+}

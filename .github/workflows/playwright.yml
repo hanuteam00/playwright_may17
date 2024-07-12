@@ -25,7 +25,7 @@ jobs: # This starts the definition of jobs.
         run: npx playwright install --with-deps # It uses the `playwright install` command.
 
       - name: Run Playwright tests # This step runs your Playwright tests.
-        run: npx playwright test "tests/inprogress/1.login.test.ts" # It's currently set to only run the `1.login.test.ts` test file.
+        run: npx playwright test "tests/inprogress" # It's currently set to only run the `1.login.test.ts` test file.
         # run: npx playwright test  # This line is commented out, so it won't do anything.
 
       - uses: actions/upload-artifact@v4 # This step uploads the test reports as artifacts.

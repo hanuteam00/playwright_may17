@@ -1,12 +1,12 @@
 {
   "config": {
-    "configFile": "/Users/manhkaka/Downloads/automation-tut/playwright_may17/playwright.config.ts",
-    "rootDir": "/Users/manhkaka/Downloads/automation-tut/playwright_may17",
+    "configFile": "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17/playwright.config.ts",
+    "rootDir": "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17",
     "forbidOnly": false,
     "fullyParallel": false,
     "globalSetup": null,
     "globalTeardown": null,
-    "globalTimeout": 0,
+    "globalTimeout": 3600000,
     "grep": {},
     "grepInvert": null,
     "maxFailures": 0,
@@ -16,24 +16,25 @@
     "preserveOutput": "always",
     "reporter": [
       [
+        "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17/reports/my-awesome-reporter.js",
+        null
+      ],
+      [
         "line",
         null
-      ],
-      [
-        "dot",
-        null
-      ],
-      [
-        "list",
-        {
-          "printSteps": true
-        }
       ],
       [
         "blob",
         {
           "outputDir": "reports/blob",
           "fileName": "blob-report-darwin.zip"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "reports/html",
+          "open": "never"
         }
       ],
       [
@@ -49,10 +50,8 @@
         }
       ],
       [
-        "github",
-        {
-          "outputDir": "reports/github/github-report"
-        }
+        "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17/node_modules/allure-playwright/dist/index.js",
+        null
       ]
     ],
     "reportSlowTests": {
@@ -62,16 +61,16 @@
     "quiet": false,
     "projects": [
       {
-        "outputDir": "/Users/manhkaka/Downloads/automation-tut/playwright_may17/test-results",
+        "outputDir": "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17/test-results",
         "repeatEach": 1,
-        "retries": 2,
+        "retries": 0,
         "metadata": {},
         "id": "firefox",
         "name": "firefox",
-        "testDir": "/Users/manhkaka/Downloads/automation-tut/playwright_may17",
+        "testDir": "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17",
         "testIgnore": [],
         "testMatch": [
-          "tests/login.test.js"
+          "playwright_may17/tests/pom/base/addToCartUsingFixture.test.ts"
         ],
         "timeout": 60000
       }
@@ -79,67 +78,162 @@
     "shard": null,
     "updateSnapshots": "missing",
     "version": "1.44.0",
-    "workers": 4,
+    "workers": 5,
     "webServer": null
   },
   "suites": [
     {
-      "title": "tests/login.test.js",
-      "file": "tests/login.test.js",
+      "title": "tests/pom/base/addToCartUsingFixture.test.ts",
+      "file": "tests/pom/base/addToCartUsingFixture.test.ts",
       "column": 0,
       "line": 0,
-      "specs": [
+      "specs": [],
+      "suites": [
         {
-          "title": "Login test demo",
-          "ok": true,
-          "tags": [],
-          "tests": [
+          "title": "Page object test demo",
+          "file": "tests/pom/base/addToCartUsingFixture.test.ts",
+          "line": 10,
+          "column": 6,
+          "specs": [
             {
-              "timeout": 60000,
-              "annotations": [],
-              "expectedStatus": "passed",
-              "projectId": "firefox",
-              "projectName": "firefox",
-              "results": [
+              "title": "Register test_01",
+              "ok": true,
+              "tags": [],
+              "tests": [
                 {
-                  "workerIndex": 0,
-                  "status": "passed",
-                  "duration": 22379,
-                  "errors": [],
-                  "stdout": [],
-                  "stderr": [],
-                  "retry": 0,
-                  "startTime": "2024-05-18T05:19:04.191Z",
-                  "attachments": [
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
                     {
-                      "name": "screenshot",
-                      "contentType": "image/png",
-                      "path": "/Users/manhkaka/Downloads/automation-tut/playwright_may17/test-results/tests-login-Login-test-demo-firefox/test-finished-1.png"
-                    },
-                    {
-                      "name": "video",
-                      "contentType": "video/webm",
-                      "path": "/Users/manhkaka/Downloads/automation-tut/playwright_may17/test-results/tests-login-Login-test-demo-firefox/video.webm"
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 9848,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-06-04T10:47:09.503Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17/test-results/tests-pom-base-addToCartUs-da0ab--test-demo-Register-test-01-firefox/test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17/test-results/tests-pom-base-addToCartUs-da0ab--test-demo-Register-test-01-firefox/video.webm"
+                        }
+                      ]
                     }
-                  ]
+                  ],
+                  "status": "expected"
                 }
               ],
-              "status": "expected"
+              "id": "f77a3050609c5edbf350-f5e2daf09086d34d767a",
+              "file": "tests/pom/base/addToCartUsingFixture.test.ts",
+              "line": 12,
+              "column": 9
+            },
+            {
+              "title": "Login test_02",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 7656,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-06-04T10:47:19.723Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17/test-results/tests-pom-base-addToCartUs-a01a5-ect-test-demo-Login-test-02-firefox/test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17/test-results/tests-pom-base-addToCartUs-a01a5-ect-test-demo-Login-test-02-firefox/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f77a3050609c5edbf350-ea9d81e1a37edb4dcb1c",
+              "file": "tests/pom/base/addToCartUsingFixture.test.ts",
+              "line": 25,
+              "column": 9
+            },
+            {
+              "title": "Add to cart test_03",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "passed",
+                      "duration": 9930,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2024-06-04T10:47:27.383Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17/test-results/tests-pom-base-addToCartUs-0e838-st-demo-Add-to-cart-test-03-firefox/test-finished-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/mfv-hn-computer-0083/Downloads/automation-tut/playwright_may17/test-results/tests-pom-base-addToCartUs-0e838-st-demo-Add-to-cart-test-03-firefox/video.webm"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "f77a3050609c5edbf350-35af0f073894c12ccfb6",
+              "file": "tests/pom/base/addToCartUsingFixture.test.ts",
+              "line": 33,
+              "column": 9
             }
-          ],
-          "id": "94416ff326c6cac9157c-299a8f778bd40e517d37",
-          "file": "tests/login.test.js",
-          "line": 4,
-          "column": 5
+          ]
         }
       ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2024-05-18T05:19:03.533Z",
-    "duration": 24664.300000000003,
-    "expected": 1,
+    "startTime": "2024-06-04T10:47:09.208Z",
+    "duration": 28377.552000000003,
+    "expected": 3,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

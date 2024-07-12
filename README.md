@@ -10,22 +10,24 @@ https://www.youtube.com/watch?v=06HIhFcpBDo&list=PLZMWkkQEwOPlS6BSWWqaAIrSNf_Gw4
 https://www.lambdatest.com/learning-hub/how-to-install-playwright
 
 npm init playwright@latest
-Change to headless: false in playwright.config.ts
+
+- Change to headless
+  - headless: false, in playwright.config.ts
+
 Inside that directory, you can run several commands:
-npx playwright test
-Runs the end-to-end tests.
-npx playwright test --ui
-Starts the interactive UI mode.
-npx playwright test --project=chromium
-Runs the tests only on Desktop Chrome.
-npx playwright test example
-Runs the tests in a specific file.
-npx playwright test --debug
-Runs the tests in debug mode.
-npx playwright codegen
-Auto generate tests with Codegen.
-We suggest that you begin by typing:
-npx playwright test
+
+- npx playwright test
+  Runs the end-to-end tests. We suggest that you begin by typing: npx playwright test
+- npx playwright test --ui
+  Starts the interactive UI mode.
+- npx playwright test --project=chromium
+  Runs the tests only on Desktop Chrome.
+- npx playwright test example
+  Runs the tests in a specific file.
+- npx playwright test --debug
+  Runs the tests in debug mode.
+- npx playwright codegen
+  Auto generate tests with Codegen.
 
 ## II. Playwright Testing Features | Playwright With TypeScript Tutorial🎭| Part III | LambdaTest
 
@@ -49,18 +51,57 @@ const newPage = await newContext.newPage();
 await newPage.goto("/home");
 await page.waitForTimeout(15000);
 
-### 1. Playwright Test Generator and Test Inspector
+### II.1. Playwright Test Generator and Test Inspector
 
 –npx playwright codegen
 
-### 2. Playwright Fixtures
+### II.2. Playwright Fixtures
 
-- we don’t need to launch a Chromium browser; instead, we place a code that indicates ‘’page. goto along with the URL.’’
-- In short, we can say that there is the usage of only parameters under the Playwright test runner, and this concept is known as the Playwright fixture.
-- under the test file folder, we are using the fixture page, we open the browser and, in the end, close the browser.
-- browser's opening and closing happen alone, and we do not have to make manual changes
+- Without fixture
+  test("Login test demo", async ({ }) => {
+  const browser = await chromium.launch({ headless: false });
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  await page.goto("/login?role=educator");
+  })
+- With fixture
+  - we don’t need to launch a Chromium browser; instead, we place a code that indicates ‘’page.goto along with the URL.’’
+  - In short, there is the usage of only parameters under the Playwright test runner, and this concept is known as the Playwright fixture.
+  - under the test file folder, we are using the fixture page, we open the browser and, in the end, close the browser.
+  - browser's opening and closing happen alone, and we do not have to make manual changes
 
-### 3. Screenshots And Videos On Test Failures
+### II.3. Playwright Reporters
+
+- Playwright built-in reporters:
+  List Reporter
+  Line Reporter
+  Dot Reporter
+  HTML Reporter
+  JSON Reporter
+  JUnit Reporter
+  GitHub Actions annotations
+  - We will focus more on DOT, HTML, and JSON.
+- multiple reporters at the same time
+- Custom Reporters
+
+## 15. Reporters
+
+Third party reporters
+
+### 15.1 Allure
+
+//install the allure command line utility dependency
+npm install -g allure-commandline
+//install the Allure dependency
+npm install allure-playwright --save-dev
+//Execution
+npx playwright test....
+//Generate Allure Report in HTML
+npx allure generate ./allure-results
+Open Allure Report Using Command line
+npx allure open ./allure-report
+
+### II.4. Screenshots And Videos On Test Failures
 
 use: {
 //work - but not show correct screenshot name
@@ -73,11 +114,11 @@ size: { width: 1920, height: 1080 },
 }
 }
 
-### 4. Playwright Retries
+### II.5. Playwright Retries
 
 retries: 2,
 
-### 5. Playwright Auto-Waiting Mechanism
+### 6. Playwright Auto-Waiting Mechanism
 
 https://playwright.dev/docs/actionability
 
@@ -189,7 +230,8 @@ await expect(page.locator("[qa-id='Header']")).toHaveText("Header Testing Compon
 page.close()
 });
 
-13. Visual Testing of Components
+14. Visual Testing of Components (Playwright Visual Regression Testing)
+    https://www.lambdatest.com/learning-hub/playwright-visual-regression-testing
 
 - step 1: add below code
   await expect(page.locator("header>h1")).toHaveScreenshot()
@@ -206,11 +248,32 @@ https://playwright.dev/docs/screenshots
 
 ## IV. How To Handle Inputs and Buttons In Playwright
 
-https://www.lambdatest.com/learning-hub/handling-inputs-and-buttons-in-playwright
-https://www.youtube.com/watch?v=GJtI_KWzPIo
+- Single Input Field
+  - multiple Playwright testing inputs
+    - getAttribute
+    - Playwright expect
+    - toHaveAttributet
+    - scrollIntoViewIfNeeded
+    - inputValue
+- Two Input Fields
+  - other functions: + textContent + toHaveText + type and fill commands
+    https://www.lambdatest.com/learning-hub/handling-inputs-and-buttons-in-playwright
+    https://www.youtube.com/watch?v=GJtI_KWzPIo
 
 textContent is a function that will return the text present in particular elements
 console.log(await page.locator("#addmessage").textContent());
+
+## Annotations
+
+https://playwright.dev/docs/test-annotations
+
+- only
+- skip
+- condition to skip
+- describe - group test
+- tag tests
+  - test('test login page', {tag: '@bif',}, async ({ page }) => {})
+  - npx playwright test --grep "@bif"
 
 ## V. How To Use Functions And Selectors | Playwright With TypeScript Tutorial 🎭| Part II | LambdaTest
 
@@ -272,6 +335,7 @@ https://github.com/codewithmmak/playwright-assertions-demo
   });
 
 ## 13. Playwright Page Object Model: A Definitive Guide
+
 https://www.lambdatest.com/learning-hub/playwright-page-object-model
 https://github.com/qa-gary-parker/playwright-testing-pom
 
@@ -282,44 +346,46 @@ Outside this folder structure, we have the usual package, config, and module fil
 We may want to add ‘utilities’, ‘config’ or additional ‘helper’ folders as the project grows, but this is all we need as a starting point
 
 ### 12.1. Page class design structures
+
 1. option 1
-//registerPage.ts
-import { Page, Locator } from "@playwright/test";
-export default class RegisterPage {
-    constructor(public page: Page) { }
-    get firstNameInput(): Locator { 
-      return this.page.locator("#input-firstname"); 
+   //registerPage.ts
+   import { Page, Locator } from "@playwright/test";
+   export default class RegisterPage {
+   constructor(public page: Page) { }
+   get firstNameInput(): Locator {
+   return this.page.locator("#input-firstname");
    }
-}
-//testcase.test.ts
-import { test, expect } from './your_test_config_file'; // replace with your test config file
-import RegisterPage from './registerPage';
+   }
+   //testcase.test.ts
+   import { test, expect } from './your_test_config_file'; // replace with your test config file
+   import RegisterPage from './registerPage';
 
 let registerPage: RegisterPage;
 
 test.beforeEach(async ({ page }) => {
-   registerPage = new RegisterPage(page);
+registerPage = new RegisterPage(page);
 });
 
 test('register test', async ({ page }) => {
-   await registerPage.firstNameInput.type('John');
+await registerPage.firstNameInput.type('John');
 });
 
-2. option 2
-//registerPage.ts
-import { Page } from "@playwright/test";
-export default class RegisterPage {
+2.  option 2
+    //registerPage.ts
+    import { Page } from "@playwright/test";
+    export default class RegisterPage {
     constructor(public page: Page) { }
 
-    async enterFirstName(firstname: string) {
-        await this.page.locator("#input-firstname")
-            .type(firstname);
-    }
-});
+        async enterFirstName(firstname: string) {
+            await this.page.locator("#input-firstname")
+                .type(firstname);
+        }
+
+    });
 
 //testcase.test.ts
 test.describe("Page object test demo", async () => {
-    let register: any;
+let register: any;
 
     test.beforeEach(async ({ page }) => {
         register = new RegisterPage(page);
@@ -328,75 +394,79 @@ test.describe("Page object test demo", async () => {
     test("TC1: Register test_01", async ({ page, baseURL }, testInfo) => {
         await page.goto(`${baseURL}route=account/register`);
         await register.enterFirstName(firstName);
+
 });
 });
+
 ### 12.2. Test case design structures
+
 1. option 1
-test.describe("Page object test demo", async () => {
+   test.describe("Page object test demo", async () => {
    let register: any;
    test.beforeEach(async ({ page }) => {
-      register = new RegisterPage(page);
+   register = new RegisterPage(page);
    });
    test("Register test_01", async ({ page, baseURL }, testInfo) => {
-      await page.goto(`${baseURL}route=account/register`);
+   await page.goto(`${baseURL}route=account/register`);
    });
-});
-Ưu điểm:
-RegisterPage được khởi tạo mới trước mỗi test case, giúp đảm bảo rằng không có trạng thái nào được chia sẻ giữa các test case. Điều này giúp các test case của bạn độc lập hơn.
-Nếu bạn cần sử dụng RegisterPage trong nhiều test case, việc khởi tạo nó một lần trong beforeEach sẽ giúp giảm bớt lượng mã lặp lại.
-Nhược điểm:
-Nếu chỉ có một số ít test case cần sử dụng RegisterPage, việc khởi tạo nó trước mỗi test case có thể là không cần thiết và làm chậm quá trình thực hiện test.
+   });
+   Ưu điểm:
+   RegisterPage được khởi tạo mới trước mỗi test case, giúp đảm bảo rằng không có trạng thái nào được chia sẻ giữa các test case. Điều này giúp các test case của bạn độc lập hơn.
+   Nếu bạn cần sử dụng RegisterPage trong nhiều test case, việc khởi tạo nó một lần trong beforeEach sẽ giúp giảm bớt lượng mã lặp lại.
+   Nhược điểm:
+   Nếu chỉ có một số ít test case cần sử dụng RegisterPage, việc khởi tạo nó trước mỗi test case có thể là không cần thiết và làm chậm quá trình thực hiện test.
 2. option 2
-test.describe("Page object test demo", async () => {
+   test.describe("Page object test demo", async () => {
    test("Register test_01", async ({ page, baseURL }, testInfo) => {
    //việc khởi tạo RegisterPage trong mỗi test case cũng giúp đảm bảo rằng không có trạng thái nào được chia sẻ giữa các test case, giúp các test case của bạn độc lập hơn
    const register = new RegisterPage(page);
    });
-});
-Ưu điểm:
-Bạn có thể kiểm soát chính xác khi nào RegisterPage được khởi tạo, và nó chỉ được khởi tạo cho những test case cần thiết.
-Điều này cũng giúp đảm bảo rằng không có trạng thái nào được chia sẻ giữa các test case.
-Nhược điểm:
-Nếu RegisterPage cần được sử dụng trong nhiều test case, việc khởi tạo nó trong mỗi test case có thể dẫn đến việc lặp lại mã.
+   });
+   Ưu điểm:
+   Bạn có thể kiểm soát chính xác khi nào RegisterPage được khởi tạo, và nó chỉ được khởi tạo cho những test case cần thiết.
+   Điều này cũng giúp đảm bảo rằng không có trạng thái nào được chia sẻ giữa các test case.
+   Nhược điểm:
+   Nếu RegisterPage cần được sử dụng trong nhiều test case, việc khởi tạo nó trong mỗi test case có thể dẫn đến việc lặp lại mã.
 
 3. Sử dụng Fixture trong base/pomFixture.ts
-ví dụ: Trong ví dụ này, chúng tôi đã tạo hai fixture loginPage và homePage để tạo các đối tượng trang cụ thể. Sau đó, chúng tôi sử dụng các fixture này trong các bài kiểm tra để thực hiện các hành động trên các trang cụ thể.
-import { test as baseTest } from '@playwright/test';
-import LoginPage from '../pages/loginPage';
-import HomePage from '../pages/homePage';
+   ví dụ: Trong ví dụ này, chúng tôi đã tạo hai fixture loginPage và homePage để tạo các đối tượng trang cụ thể. Sau đó, chúng tôi sử dụng các fixture này trong các bài kiểm tra để thực hiện các hành động trên các trang cụ thể.
+   import { test as baseTest } from '@playwright/test';
+   import LoginPage from '../pages/loginPage';
+   import HomePage from '../pages/homePage';
 
 // Định nghĩa fixture
 const test = baseTest.extend({
-  loginPage: async ({ page }, use) => {
-    const loginPage = new LoginPage(page);
-    await use(loginPage);
-  },
-  homePage: async ({ page }, use) => {
-    const homePage = new HomePage(page);
-    await use(homePage);
-  },
+loginPage: async ({ page }, use) => {
+const loginPage = new LoginPage(page);
+await use(loginPage);
+},
+homePage: async ({ page }, use) => {
+const homePage = new HomePage(page);
+await use(homePage);
+},
 });
 
 // Sử dụng fixture trong bài kiểm tra
 test('Login test', async ({ page, loginPage }) => {
-  await loginPage.login('user@example.com', 'password');
-  // ...
+await loginPage.login('user@example.com', 'password');
+// ...
 });
 
 test('Home page test', async ({ page, homePage }) => {
-  await homePage.clickOnSpecialHotMenu();
-  // ...
+await homePage.clickOnSpecialHotMenu();
+// ...
 });
 
 ## 14. Playwright Visual Regression Testing
+
 https://github.com/LambdaTest/playwright-sample
 
 // example.spec.js
 const { test, expect } = require('@playwright/test');
 
 test('example test', async ({ page }) => {
-  await page.goto('https://ecommerce-playground.lambdatest.io/');
-  await expect(page).toHaveScreenshot();
+await page.goto('https://ecommerce-playground.lambdatest.io/');
+await expect(page).toHaveScreenshot();
 });
 
 Run above code 1st time to get screenshot
@@ -406,17 +476,19 @@ Run above code 3rd time + expand screen to get failed test-results
 Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.
 Error: Screenshot comparison failed:
 
-  947 pixels (ratio 0.01 of all image pixels) are different.
+947 pixels (ratio 0.01 of all image pixels) are different.
 
 Expected: /Users/manhkaka/Downloads/automation-tut/playwright_may17/tests/inprogress/visualTesting.test.ts-snapshots/example-test-1-firefox-darwin.png
 Received: /Users/manhkaka/Downloads/automation-tut/playwright_may17/test-results/visualTesting-example-test-firefox/example-test-1-actual.png
 Diff: /Users/manhkaka/Downloads/automation-tut/playwright_may17/test-results/visualTesting-example-test-firefox/example-test-1-diff.png
 
 ### 14.2. Implementing visual testing for a single element
+
 Before we perform Playwright visual regression testing, we will need to update our baseline images. We can do that by running this simple command:
 npx playwright test --update-snapshots
 
 ### 14.3. Working with Thresholds
+
 With Playwright visual regression testing, as with any type of automation testing, there will always be a margin for error. This is where thresholds come in useful. We can adjust and manage various threshold types depending on our application and use case.
 
 Here are three examples below:
@@ -434,11 +506,11 @@ toHaveScreenshot: { maxDiffPixels: 100 },
 };
 
 ### 14.4. Ignoring sections of the webpage during comparison
-- use an option called ‘mask,’ which allows us to ignore a locator or group of locators from our comparison
-npx playwright test --update-snapshots
-// example.spec.js
-const { test, expect } = require('@playwright/test');
 
+- use an option called ‘mask,’ which allows us to ignore a locator or group of locators from our comparison
+  npx playwright test --update-snapshots
+  // example.spec.js
+  const { test, expect } = require('@playwright/test');
 
 test('example test', async ({ page }) => {
 await page.goto('https://ecommerce-playground.lambdatest.io/');
@@ -446,17 +518,18 @@ await expect(page).toHaveScreenshot({mask: [page.locator('.carousel-inner')]})
 });
 
 ### 14.5. Implementing full page visual comparisons
+
 - this will capture the full height of the webpage. This can be useful if your website has a lot of scrollable components or content you need to verify.
 - we capture a larger area, the chance of failure may be higher. We can reduce this risk by using a few additional parameters.
-   + animations: “disabled” - this will stop any CSS animations or transitions on your webpage.
-   + maxDiffPixelRatio: 0.2 - which we covered earlier, will allow some room for minor differences.
-// example.spec.js
-const { test, expect } = require('@playwright/test');
-test('example test', async ({ page }) => {
-await page.goto('https://ecommerce-playground.lambdatest.io/');
-await expect(page).toHaveScreenshot
-({ fullPage: true, animations: "disabled", maxDiffPixelRatio: 0.2 });
-});
+  - animations: “disabled” - this will stop any CSS animations or transitions on your webpage.
+  - maxDiffPixelRatio: 0.2 - which we covered earlier, will allow some room for minor differences.
+    // example.spec.js
+    const { test, expect } = require('@playwright/test');
+    test('example test', async ({ page }) => {
+    await page.goto('https://ecommerce-playground.lambdatest.io/');
+    await expect(page).toHaveScreenshot
+    ({ fullPage: true, animations: "disabled", maxDiffPixelRatio: 0.2 });
+    });
 
 Playwright Cucumber JS
 https://github.com/LambdaTest/playwright-sample
@@ -465,6 +538,7 @@ npm run test-cucumber-js cucumber-js /Users/manhkaka/Downloads/automation-tut/pl
 -> does not work
 
 ## Playwright CLI (command line)
+
 https://playwright.dev/docs/test-cli
 Run all the tests
 npx playwright test
@@ -494,13 +568,21 @@ Ask for help
 npx playwright test --help
 
 ## Playwright CI/CD
+
 https://bitbucket.org/pradap-pandiyan-sdet/playwright-circle-ci/src/master/
 https://pradappandiyan.medium.com/running-playwright-tests-on-circleci-a-step-by-step-guide-16dec052cbea
 
 ## Playwright and Docker
+
 https://www.digitalocean.com/community/tutorials/how-to-run-end-to-end-tests-using-playwright-and-docker
 
 dotenv package to manage your environment variables
 Install the dotenv package:
 npm install dotenv
 Create a .env file in your project root and add your URLs:
+
+### Fixtures:
+
+#### 1/Docs: https://playwright.dev/docs/test-fixtures
+
+#### 2/Youtube: https://www.youtube.com/watch?v=NE7F-uQM4QU

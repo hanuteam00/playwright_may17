@@ -1,0 +1,18 @@
+[
+  {
+    "email": "engineer+edu1@gotitapp.co",
+    "password": "Aa123456@@@@",
+    "errorMessage1": "Invalid email or password. Please try again!"
+  },
+  {
+    "email": "engineer+eduuuu@gotitapp.co",
+    "password": "Aa123456@",
+    "errorMessage1": "Invalid email or password. Please try again!"
+  },
+  {
+    "email": "",
+    "password": "",
+    "errorMessage3": "Please enter your email address.",
+    "errorMessage4": "Please enter your password."
+  }
+]

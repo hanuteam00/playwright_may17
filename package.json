@@ -17,6 +17,7 @@
     "@cucumber/cucumber": "^10.7.0",
     "@playwright/test": "^1.44.0",
     "@types/node": "^20.12.12",
+    "allure-playwright": "^2.15.1",
     "moment": "^2.30.1"
   },
   "dependencies": {

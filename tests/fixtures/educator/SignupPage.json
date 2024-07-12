@@ -1,0 +1,19 @@
+{
+  "texts": [
+    "Create an Instructor account",
+    "First name",
+    "Please enter your first name.",
+    "Last name",
+    "Please enter your last name.",
+    "Email",
+    "Please enter your email address.",
+    "Password",
+    "Please enter your password.",
+    "By creating an account, you agree to MathGPT’s Terms of Service and Privacy Policy",
+    "Sign up",
+    "Or",
+    "Sign up with Google",
+    "Already have an account? Log in"
+  ],
+  "links": ["Terms of Service", "Privacy Policy"]
+}

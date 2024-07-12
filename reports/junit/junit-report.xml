@@ -1,11 +1,29 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="24.664300000000004">
-<testsuite name="tests/login.test.js" timestamp="2024-05-18T05:19:03.599Z" hostname="firefox" tests="1" failures="0" skipped="0" time="22.379" errors="0">
-<testcase name="Login test demo" classname="tests/login.test.js" time="22.379">
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="28.377552000000005">
+<testsuite name="tests/pom/base/addToCartUsingFixture.test.ts" timestamp="2024-06-04T10:47:09.269Z" hostname="firefox" tests="3" failures="0" skipped="0" time="27.434" errors="0">
+<testcase name="Page object test demo › Register test_01" classname="tests/pom/base/addToCartUsingFixture.test.ts" time="9.848">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|../../test-results/tests-login-Login-test-demo-firefox/test-finished-1.png]]
+[[ATTACHMENT|../../test-results/tests-pom-base-addToCartUs-da0ab--test-demo-Register-test-01-firefox/test-finished-1.png]]
 
-[[ATTACHMENT|../../test-results/tests-login-Login-test-demo-firefox/video.webm]]
+[[ATTACHMENT|../../test-results/tests-pom-base-addToCartUs-da0ab--test-demo-Register-test-01-firefox/video.webm]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Page object test demo › Login test_02" classname="tests/pom/base/addToCartUsingFixture.test.ts" time="7.656">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/tests-pom-base-addToCartUs-a01a5-ect-test-demo-Login-test-02-firefox/test-finished-1.png]]
+
+[[ATTACHMENT|../../test-results/tests-pom-base-addToCartUs-a01a5-ect-test-demo-Login-test-02-firefox/video.webm]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Page object test demo › Add to cart test_03" classname="tests/pom/base/addToCartUsingFixture.test.ts" time="9.93">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../../test-results/tests-pom-base-addToCartUs-0e838-st-demo-Add-to-cart-test-03-firefox/test-finished-1.png]]
+
+[[ATTACHMENT|../../test-results/tests-pom-base-addToCartUs-0e838-st-demo-Add-to-cart-test-03-firefox/video.webm]]
 ]]>
 </system-out>
 </testcase>
